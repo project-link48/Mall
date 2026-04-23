@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mall — Concept Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #111008;
+  --paper: #f7f4ee;
+  --paper2: #f0ece3;
+  --accent: #c8501a;
+  --accent2: #e8a020;
+  --muted: #8a8070;
+  --border: #e0d8cc;
+  --dark: #1a1610;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(200,80,26,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(232,160,32,0.06) 0%, transparent 60%);
+}
+
+/* Subtle grid texture */
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cover-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cover-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.cover-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+.cover-mid {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 18vw, 9rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.cover-title span {
+  color: var(--accent);
+  display: block;
+}
+
+.cover-tagline {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.45);
+  max-width: 380px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.cover-bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cover-version {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.15em;
+}
+
+.cover-scroll {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scroll-line {
+  width: 30px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ── BODY SECTIONS ── */
+.section {
+  padding: 4rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section:last-child { border-bottom: none; }
+
+.section-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-meta::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  margin-top: 2rem;
+}
+
+p {
+  color: #3a3428;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+p:last-child { margin-bottom: 0; }
+
+strong { color: var(--ink); font-weight: 600; }
+
+em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--accent);
+  background: var(--paper2);
+  border-radius: 0 8px 8px 0;
+}
+
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ── LAYER CARDS ── */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.layer-card {
+  background: #fff;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1rem;
+  align-items: start;
+  transition: background 0.2s;
+}
+
+.layer-card:hover { background: var(--paper2); }
+
+.layer-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  padding-top: 0.2rem;
+}
+
+.layer-card h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.layer-card p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── MECHANIC BLOCKS ── */
+.mechanic {
+  background: var(--dark);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.mechanic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 0% 100%, rgba(200,80,26,0.12) 0%, transparent 60%);
+}
+
+.mechanic-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.mechanic h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.mechanic p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  line-height: 1.7;
+}
+
+/* ── TENSION TABLE ── */
+.tension {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.tension-box {
+  padding: 1.25rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.tension-box.old {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.tension-box.new {
+  background: var(--accent);
+  color: #fff;
+}
+
+.tension-box strong {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0.6;
+}
+
+.tension-box.new strong { color: rgba(255,255,255,0.7); }
+
+.tension-item {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.82rem;
+}
+.tension-box.new .tension-item { border-bottom-color: rgba(255,255,255,0.15); }
+.tension-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* ── THE OPEN/CLOSE ARC ── */
+.arc {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 2rem 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.arc-step {
+  flex: 1;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  position: relative;
+}
+
+.arc-step:nth-child(1) { background: #1a3a1a; }
+.arc-step:nth-child(2) { background: #1a4a1a; }
+.arc-step:nth-child(3) { background: #2a5a1a; }
+.arc-step:nth-child(4) { background: #3a6a1a; }
+.arc-step:nth-child(5) { background: #2a5a1a; }
+.arc-step:nth-child(6) { background: #1a3a14; }
+.arc-step:nth-child(7) { background: #0f1f0f; }
+
+.arc-time {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.arc-emoji { font-size: 1.1rem; display: block; margin-bottom: 0.2rem; }
+
+.arc-label {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.3;
+}
+
+/* ── QUESTION BLOCK ── */
+.open-question {
+  padding: 2rem;
+  background: var(--paper2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+.open-question p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ── CLOSING ── */
+.closing {
+  background: var(--dark);
+  padding: 5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(200,80,26,0.1) 0%, transparent 70%);
+}
+
+.closing h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1rem;
+}
+
+.closing p {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.closing-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: 0.15;
+  position: relative;
+  z-index: 2;
+  line-height: 1;
+  margin-top: 3rem;
+}
+
+/* ── TOC ── */
+.toc {
+  padding: 2.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.toc-list li a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.88rem;
+  padding: 0.4rem 0;
+  transition: color 0.2s;
+}
+
+.toc-list li a:hover { color: var(--accent); }
+
+.toc-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.toc-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--border);
+  margin-bottom: 3px;
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-label">Concept Brief — Confidential</div>
+    <div class="cover-date">April 2026</div>
+  </div>
+
+  <div class="cover-mid">
+    <div class="cover-title">
+      The
+      <span>Mall.</span>
+    </div>
+    <div class="cover-tagline">A new kind of online commerce. Built around place, time, and the feeling of being somewhere.</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-version">V0.1 — WORKING DRAFT</div>
+    <div class="cover-scroll"><div class="scroll-line"></div> Read on</div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <div class="toc-label">Contents</div>
+  <ul class="toc-list">
+    <li><a href="#problem"><span class="toc-num">01</span><span>The Problem Worth Solving</span><span class="toc-dots"></span></a></li>
+    <li><a href="#idea"><span class="toc-num">02</span><span>The Core Idea</span><span class="toc-dots"></span></a></li>
+    <li><a href="#layers"><span class="toc-num">03</span><span>Three Layers of Experience</span><span class="toc-dots"></span></a></li>
+    <li><a href="#pasar"><span class="toc-num">04</span><span>The Pasar Malam Mechanic</span><span class="toc-dots"></span></a></li>
+    <li><a href="#vendors"><span class="toc-num">05</span><span>What Vendors Get</span><span class="toc-dots"></span></a></li>
+    <li><a href="#questions"><span class="toc-num">06</span><span>Open Questions</span><span class="toc-dots"></span></a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1: PROBLEM -->
+<div class="section" id="problem">
+  <div class="section-meta">01 — The Problem</div>
+  <h2>Online shopping lost its soul somewhere.</h2>
+
+  <p>Shopee and Lazada solved convenience. Search, compare, buy, leave. The experience is frictionless but it's also emotionally flat. There's no discovery, no atmosphere, no reason to linger. You open the app with a mission and you close it having completed that mission. Nothing more.</p>
+
+  <p>For buyers, <strong>no platform remembers where anything is from.</strong> Handmade candles from Penang sit next to dropshipped products from Guangzhou. Everything looks the same. Nobody remembers who sold them what. Brand loyalty between buyer and local seller is structurally impossible on these platforms.</p>
+
+  <p>For local vendors, <strong>the only lever is price.</strong> They can't build a brand. They can't build a following. They can't create an experience. They compete on discount against sellers with zero overhead on the other side of the world. Most lose slowly.</p>
+
+  <div class="pull-quote">
+    <p>"The problem isn't that Malaysians don't want to buy local. It's that there's nowhere good to do it."</p>
+  </div>
+
+  <p>Meanwhile, the platforms people actually spend time on — TikTok, Instagram, YouTube — have mastered attention but not commerce. People watch for hours and buy nothing, or buy impulsively from a chaotic feed with no sense of place or trust. The entertainment and the commerce never properly connect.</p>
+
+  <div class="tension">
+    <div class="tension-box old">
+      <strong>Current Reality</strong>
+      <div class="tension-item">Shopping is a mission, not a mood</div>
+      <div class="tension-item">No local identity or origin signal</div>
+      <div class="tension-item">Vendor = product listing, nothing more</div>
+      <div class="tension-item">Price is the only differentiator</div>
+      <div class="tension-item">Platform owns the relationship</div>
+    </div>
+    <div class="tension-box new">
+      <strong>The Opportunity</strong>
+      <div class="tension-item">Shopping as leisure, discovery, experience</div>
+      <div class="tension-item">Location as identity and trust signal</div>
+      <div class="tension-item">Vendor = a place you remember</div>
+      <div class="tension-item">Creativity and experience as differentiator</div>
+      <div class="tension-item">Buyer loyal to the vendor, not the platform</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: THE IDEA -->
+<div class="section" id="idea">
+  <div class="section-meta">02 — The Core Idea</div>
+  <h2>A place you visit. Not a tool you use.</h2>
+
+  <p>The Mall is an online commerce platform built around the mental model of a real shopping mall — with location identity, a sense of atmosphere, and the feeling that something is always happening somewhere.</p>
+
+  <p>Each mall exists in a specific Malaysian city. Georgetown. Kuala Lumpur. Johor Bahru. Melaka. The location isn't just a tag — <strong>it's a signal of origin, proximity, and community.</strong> When a buyer shops at Georgetown Mall, they know they are buying from Penang businesses. Delivery is local. The money stays local. That matters to a growing number of Malaysian consumers.</p>
+
+  <p>Vendors don't get a product listing. They get a <strong>shopfront</strong> — a window display they control, a name above the door, an address people remember. Over time, buyers develop relationships with specific shops the same way they do in real malls. They come back not to search, but to see what's new.</p>
+
+  <div class="pull-quote">
+    <p>"We're not competing with Shopee. We're competing with TikTok — for the idle Sunday afternoon, the browsing mood, the leisure time that every other marketplace ignores."</p>
+  </div>
+
+  <p>The platform is designed for two kinds of visits. The first is purposeful — someone wants something specific, finds it locally, buys it. The second, and more interesting, is the <em>wandering visit</em> — someone opens the mall with no agenda, browses, discovers, and buys something they didn't know they wanted. That second visit is worth more, and no existing platform is designed for it.</p>
+</div>
+
+<!-- SECTION 3: THREE LAYERS -->
+<div class="section" id="layers">
+  <div class="section-meta">03 — Experience Architecture</div>
+  <h2>Three layers that work together.</h2>
+
+  <p>The experience isn't one thing. It's three distinct layers, each serving a different purpose, each making the others stronger.</p>
+
+  <div class="layers">
+    <div class="layer-card">
+      <div class="layer-num">L1</div>
+      <div>
+        <h4>Entry — Location Identity</h4>
+        <p>The first thing a buyer chooses is a city. Georgetown Mall. Subang Mall. JB Central. This familiar mental model requires zero learning. It immediately answers "where is this from" and "how fast can I get it." Location is the trust signal and the delivery promise in one.</p>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-num">L2</div>
+      <div>
+        <h4>Retention — Discovery Atmosphere</h4>
+        <p>Inside the mall, browsing feels different from a search engine. Vendors have window displays — animated, seasonal, creative. There are floors by category. There is ambient atmosphere. The buyer is walking, not being served results. That feeling of agency is what creates dwell time and repeat visits.</p>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-num">L3</div>
+      <div>
+        <h4>Delight — Living Moments</h4>
+        <p>Unexpected things happen. A vendor runs a live session — a performance, a product demo, a cooking show. The platform transforms for festive seasons — CNY, Hari Raya, Christmas, Merdeka. A simple game sends buyers on a treasure hunt across shops. These moments are never mandatory, always discoverable. They are the thing people remember and talk about.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>The key design principle across all three layers: <strong>experience is always optional, never a gate.</strong> A buyer who just wants to buy should be able to. The atmosphere is a bonus they discover, not a wall they navigate through.</p>
+</div>
+
+<!-- SECTION 4: PASAR MALAM -->
+<div class="section" id="pasar">
+  <div class="section-meta">04 — The Pasar Malam Mechanic</div>
+  <h2>The most important idea in this document.</h2>
+
+  <p>Within each city mall, there is a permanent shopping floor — open every day, browse anytime. But alongside it, there is a second space that operates on a completely different logic.</p>
+
+  <p><strong>The Pasar Malam.</strong> A time-limited digital market that opens for a defined window — Sunday afternoon to Sunday night, for example — and then closes. A closed sign appears on the door. It is gone until next week.</p>
+
+  <p>This mechanic does several things at once that no permanent marketplace can replicate.</p>
+
+  <div class="mechanic">
+    <div class="mechanic-label">Why It Works</div>
+    <h3>Scarcity creates desire. The closing time is the marketing.</h3>
+    <p>Nobody markets apam balik at a pasar malam. The uncle doesn't need to run ads. The fact that it ends — that the stall will pack up at midnight — is the entire reason people show up at 9pm. Urgency that is genuine, not manufactured. The same psychology translates directly to a time-limited digital market.</p>
+  </div>
+
+  <p>The pasar malam creates <strong>a ritual.</strong> Not "open the app when I remember" — but "Sunday 4pm, the market opens." Rituals are the most powerful retention mechanic in any consumer product. More powerful than notifications. More powerful than discounts. People protect time for rituals.</p>
+
+  <p>It also disciplines vendor behaviour naturally. Because the slot is limited and event-like, vendors prepare. They bring their best products. They create pasar malam-only items. Special batches. Exclusive pricing. The format shapes vendor quality without needing to enforce it.</p>
+
+  <!-- The arc -->
+  <p style="margin-bottom:0.75rem; font-size:0.82rem; color:var(--muted);">The emotional arc of a Sunday pasar malam:</p>
+  <div class="arc">
+    <div class="arc-step">
+      <span class="arc-time">3PM</span>
+      <span class="arc-emoji">🔔</span>
+      <div class="arc-label">Notification. Opens soon.</div>
+    </div>
+    <div class="arc-step">
+      <span class="arc-time">4PM</span>
+      <span class="arc-emoji">🏮</span>
+      <div class="arc-label">Lights on. Market opens.</div>
+    </div>
+    <div class="arc-step">
+      <span class="arc-time">5PM</span>
+      <span class="arc-emoji">🎵</span>
+      <div class="arc-label">Live session begins somewhere.</div>
+    </div>
+    <div class="arc-step">
+      <span class="arc-time">7PM</span>
+      <span class="arc-emoji">🔥</span>
+      <div class="arc-label">Peak hour. Vendors active.</div>
+    </div>
+    <div class="arc-step">
+      <span class="arc-time">9PM</span>
+      <span class="arc-emoji">⏳</span>
+      <div class="arc-label">Last hour. Urgency builds.</div>
+    </div>
+    <div class="arc-step">
+      <span class="arc-time">10PM</span>
+      <span class="arc-emoji">🌙</span>
+      <div class="arc-label">Closing soon. Final chance.</div>
+    </div>
+    <div class="arc-step">
+      <span class="arc-time">11PM</span>
+      <span class="arc-emoji">🔒</span>
+      <div class="arc-label">Closed. See you next Sunday.</div>
+    </div>
+  </div>
+
+  <p>The pasar malam can expand into other formats using the same mechanic. A Ramadan bazaar running only in the evenings during puasa month. A Saturday morning market for fresh and artisan goods. A pop-up slot for a new vendor testing their first products. A 2-hour flash sale by an established shop. The platform becomes a <strong>venue that programs commerce events</strong> — not just a marketplace that hosts listings.</p>
+
+  <p>One important constraint: <strong>not all products belong here.</strong> The pasar malam should have a curation layer. Vendors apply to participate with specific products for that session. This keeps quality high, keeps the experience feeling curated rather than dumped, and gives buyers confidence that what they find here is worth their time.</p>
+</div>
+
+<!-- SECTION 5: VENDORS -->
+<div class="section" id="vendors">
+  <div class="section-meta">05 — What Vendors Get</div>
+  <h2>A stage, not a listing.</h2>
+
+  <p>The fundamental promise to vendors is different from every other platform. Shopee gives them reach at the cost of identity. The Mall gives them identity and builds reach around it.</p>
+
+  <h3>A shopfront they own</h3>
+  <p>Every vendor controls their window display — the visual first impression buyers see before entering. Animated, seasonal, creative. Vendors who invest in their window get noticed. Vendors who are creative get remembered. This is brand-building that Shopee structurally cannot offer.</p>
+
+  <h3>A local address</h3>
+  <p>Being in Georgetown Mall means something to Penang buyers. It signals local, it signals proximity, it signals that delivery is fast and the seller is reachable. That address is worth more than any Shopee badge.</p>
+
+  <h3>A stage for live commerce</h3>
+  <p>Vendors can run live sessions inside their shop — a performance, a product showcase, a demo, a conversation. A live icon appears on their shopfront. Buyers browsing nearby see it and walk in. This is appointment commerce — it gives vendors a reason to be present and buyers a reason to come back at specific times.</p>
+
+  <h3>Access to the pasar malam slot</h3>
+  <p>For vendors who want it, a weekly time-limited market slot with higher visibility, event energy, and buyers in discovery mode. The best vendors will treat this as their main selling moment of the week. The format rewards preparation and creativity over advertising spend.</p>
+
+  <h3>A community, not a race to the bottom</h3>
+  <p>When the platform is built around experience and local identity rather than price comparison, vendors compete on quality and creativity. That is a game local businesses can win. The price war is a game they will always lose.</p>
+</div>
+
+<!-- SECTION 6: OPEN QUESTIONS -->
+<div class="section" id="questions">
+  <div class="section-meta">06 — Open Questions</div>
+  <h2>What we haven't figured out yet.</h2>
+
+  <p>This is a concept, not a plan. There are real questions that need honest answers before this becomes a business.</p>
+
+  <div class="open-question">
+    <p>How do we guarantee the mall feels alive on day one? An empty mall is worse than no mall. What's the minimum viable vendor count to create genuine atmosphere?</p>
+  </div>
+
+  <div class="open-question">
+    <p>Will Malaysian vendors show up for a defined time slot and treat it like a real shift — or is that too much discipline to ask of SME sellers who are used to passive listings?</p>
+  </div>
+
+  <div class="open-question">
+    <p>Which city do we start in, and why? The first mall sets the tone for everything that follows. It needs to be a city with enough local business density and enough consumer pride in local buying.</p>
+  </div>
+
+  <div class="open-question">
+    <p>How do we balance experience and convenience? The experience layer must never become a barrier. Someone who just wants to buy should never feel like they have to earn it.</p>
+  </div>
+
+  <div class="open-question">
+    <p>What does the business model look like? Commission per sale, monthly vendor subscription, premium window display slots, pasar malam participation fee — or some combination. The model needs to align platform incentives with vendor success, not conflict with it.</p>
+  </div>
+
+  <div class="open-question">
+    <p>How do we handle the transition from "interesting concept" to "place people actually have a habit of visiting"? Habit formation is slow. What is the one behaviour we optimise for in year one?</p>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2>The opportunity is real.<br>The timing is right.</h2>
+  <p>Malaysian consumers want to buy local. Local vendors need a better platform. Nobody has built the experience layer yet. That gap is the business.</p>
+  <div class="closing-mark">TM</div>
+</div>
+
+</body>
+</html>
